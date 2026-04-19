@@ -49,15 +49,15 @@
                     <div class="logo overflow-hidden">
                         <a href="" class="logo-expanded">
                             <img src="./assets/images/bt8-expand-light.png" height="40" class="logo-light"
-                                alt="在线工具网">
+                                alt="网达导航站">
                             <img src="./assets/images/bt8-expand-dark.png" height="40" class="logo-dark d-none"
-                                alt="在线工具网">
+                                alt="网达导航站">
                         </a>
                         <a href="" class="logo-collapsed">
                             <img src="./assets/images/bt.jpg" height="40" class="logo-light"
-                                alt="在线工具网">
+                                alt="网达导航站">
                             <img src="./assets/images/bt.jpg" height="40" class="logo-dark d-none"
-                                alt="在线工具网">
+                                alt="网达导航站">
                         </a>
                     </div>
 
@@ -235,11 +235,9 @@
             <div class="navbar navbar-expand-md">
                 <div class="container-fluid p-0">
 
-                    <a href="" class="navbar-brand d-md-none" title="在线工具网">
-                        <img src="./assets/images/bt.png" class="logo-light"
-                            alt="在线工具网">
-                        <img src="./assets/images/bt.png" class="logo-dark d-none"
-                            alt="在线工具网">
+                    <a href="" class="navbar-brand d-md-none" title="网达导航站">
+                        <img src="./assets/images/bt.png" class="logo-light" alt="网达导航站">
+                        <img src="./assets/images/bt.png" class="logo-dark d-none" alt="网达导航站">
 
 						
                     </a>
@@ -302,7 +300,20 @@
     </div>
 
 
-<div class="header-big  post-top css-color mb-4" id="search-bg" style="">
+
+
+
+
+
+
+
+	
+	
+
+<!-- ==============================================
+【1】保留你原来的 站外搜索（百度、淘宝、知乎、工具...）
+================================================= -->
+<div class="header-big post-top css-color mb-4" id="search-bg" style="">
     <div class="s-search">
         <div id="search" class="s-search mx-auto">
             <div id="search-list-menu" class="hide-type-list">
@@ -321,7 +332,7 @@
 
             <form action="https://www.baidu.com?s=" method="get" target="_blank" class="super-search-fm">
                 <input type="text" id="search-text" class="form-control smart-tips search-key"
-                    zhannei="" placeholder="输入关键字搜索" style="outline:0" autocomplete="off">
+                    zhannei="" placeholder="站外搜索（百度、必应、淘宝、知乎...）" style="outline:0" autocomplete="off">
                 <button class="submit" type="submit"><i class="iconfont icon-search"></i></button>
             </form>
 
@@ -541,13 +552,52 @@
             </div>
         </div>
     </div>
-
 </div>
 
+<!-- ==============================================
+【2】新增 → 美观大气的【站内搜索】（搜索本站卡片）
+================================================= -->
+<div class="header-big post-top css-color mb-4" id="search-bg">
+    <div class="s-search">
+        <div id="search-main" class="s-search mx-auto">
+            <div class="site-search-box text-center">
+                <form class="site-search-form" onsubmit="return false;">
+                    <input
+                        type="text"
+                        id="site-card-search"
+                        class="site-search-input"
+                        placeholder="🔍 搜索本站工具卡片，例如：图片转换、壁纸、视频"
+                        autocomplete="off">
+                </form>
+                <div class="site-search-tip">输入关键词后，将自动筛选本站内容</div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- ==============================================
+【3】内容区域（包含搜索不到的提示）
+================================================= -->
 <div id="content" class="content-site customize-site">
+    <div id="site-search-empty" class="site-search-empty">没有找到匹配的卡片，请换个关键词试试。</div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 
 
             <div class="d-flex flex-fill">
@@ -8945,6 +8995,26 @@ function switchNightMode(){
     }
 }
 </script>
+
+
+<script>
+$(document).ready(function(){
+    $("#site-card-search").on("input",function(){
+        var e=$(this).val().toLowerCase();
+        if(e){
+            $(".url-card").filter(function(){
+                $(this).toggle($(this).text().toLowerCase().indexOf(e)>-1)
+            });
+            var t=$(".url-card:visible").length;
+            $("#site-search-empty").toggle(t===0)
+        }else{
+            $(".url-card").show();
+            $("#site-search-empty").hide()
+        }
+    });
+});
+</script>
+	
 </body>
 </html>
 
