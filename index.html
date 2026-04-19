@@ -316,7 +316,7 @@
                         <label for="type-whois" data-id="group-c"><span>工具</span></label>
                         <label for="type-zhihu" data-id="group-d"><span>社区</span></label>
                         <label for="type-taobao1" data-id="group-e"><span>生活</span></label>
-                        <label for="type-boss" data-id="group-f"><span>求职</span></label>
+						<label for="type-boss" data-id="group-f"><span>求职</span></label>
                     </div>
                 </div>
             </div>
@@ -472,6 +472,7 @@
                     </ul>
                 </div>
 
+				<!-- 
                 <div class="search-group group-f">
                     <ul class="search-type">	
                         <li><input hidden="" type="radio" name="type" id="type-zhaopin"
@@ -496,8 +497,48 @@
                         </li>
                     </ul>
                 </div>
+			</div>
+            <div class="card search-smart-tips search-hot-text">
+                <ul id="word" style="display: none"></ul>
             </div>
+        </div>
+    </div>
+</div>
+<div id="content" class="content-site customize-site">
+	<div id="site-search-empty" class="site-search-empty" style="display: none; color: #dc3545; font-weight: bold; margin-top: -20px; padding-bottom: 15px;">
+    没有找到匹配的卡片，请换个关键词试试。
+</div>				
+				 -->
 
+                <div class="search-group group-f">
+                    <ul class="search-type">						
+                        <li><input hidden="" type="radio" name="type"
+                                id="type-zhaopin"
+                                value="https://sou.zhaopin.com/jobs/searchresult.ashx?kw="
+                                data-placeholder="智联招聘">
+                            <label for="zhaopin"><span class="text-muted">智联招聘</span></label>
+                        </li>
+                        <li><input hidden="" type="radio" name="type"
+                                id="type-51job"
+                                value="https://search.51job.com/?"
+                                data-placeholder="前程无忧">
+                            <label for="type-51job"><span class="text-muted">前程无忧</span></label>
+                        </li>
+                        <li><input hidden="" type="radio" name="type"
+                                id="type-lagou"
+                                value="https://www.lagou.com/jobs/list_"
+                                data-placeholder="拉钩网">
+                            <label for="type-lagou"><span class="text-muted">拉钩网</span></label>
+                        </li>
+                        <li><input hidden="" type="radio" name="type"
+                                id="type-liepin"
+                                value="https://www.liepin.com/zhaopin/?key="
+                                data-placeholder="猎聘网">
+                            <label for="type-liepin"><span class="text-muted">猎聘网</span></label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <div class="card search-smart-tips search-hot-text">
                 <ul id="word" style="display: none"></ul>
             </div>
@@ -505,12 +546,11 @@
     </div>
 </div>
 
-<!-- 内容区域开头（必须保留这个，否则站内搜索提示不显示） -->
-<div id="content" class="content-site customize-site">
-	<div id="site-search-empty" class="site-search-empty" style="display: none; color: #dc3545; font-weight: bold; margin-top: -20px; padding-bottom: 15px;">
-    没有找到匹配的卡片，请换个关键词试试。
-</div>
 
+<div id="content" class="content-site customize-site">
+    <div id="site-search-empty" class="site-search-empty" style="display: none; color: #dc3545; font-weight: bold; margin-top: -20px; padding-bottom: 15px;">
+    没有找到匹配的卡片，请换个关键词试试。
+</div>	
 
             <div class="d-flex flex-fill">
                 <h4 class="text-gray text-lg mb-4">
