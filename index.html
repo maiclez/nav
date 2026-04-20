@@ -8744,38 +8744,55 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <script>
-(function(){
-    // 一进页面强制纯黑夜间模式
-    document.body.classList.remove('io-grey-mode');
-    document.body.classList.add('io-black-mode');
-    document.cookie = "night=1;path=/";
-    console.log('默认纯黑夜间模式已开启');
+(function () {
+    // 如果没有保存过模式
+    if (document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") === '') {
+        var hour = new Date().getHours();
+        // 晚上 22:00 ~ 早上 06:00 → 自动开启黑色夜间模式
+        if (hour > 22 || hour < 6) {
+            document.body.classList.remove('io-grey-mode');
+            document.body.classList.add('io-black-mode');
+            document.cookie = "night=1;path=/";
+        } else {
+            // 白天 → 普通灰色模式
+            document.body.classList.remove('io-black-mode');
+            document.body.classList.add('io-grey-mode');
+            document.cookie = "night=0;path=/";
+        }
+    } else {
+        var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
+        if (night === '0') {
+            document.body.classList.remove('io-black-mode');
+            document.body.classList.add('io-grey-mode');
+        } else if (night === '1') {
+            document.body.classList.remove('io-grey-mode');
+            document.body.classList.add('io-black-mode');
+        }
+    }
 })();
 
 $("#search-bg").css("background-image", "url(assets/images/bg-dna.jpg)");
 
-function switchNightMode(){
+function switchNightMode() {
     var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
-
-    if(night == '0'){
-        // 切 纯黑夜间
+    if (night === '0') {
         $("#search-bg").css("background-image", "url(assets/images/bg-dna.jpg)");
         document.body.classList.remove('io-grey-mode');
         document.body.classList.add('io-black-mode');
         document.cookie = "night=1;path=/";
-        $(".switch-dark-mode").attr("data-original-title","日间模式");
+        $(".switch-dark-mode").attr("data-original-title", "日间模式");
         $(".mode-ico").removeClass("icon-night").addClass("icon-light");
-    }else{
-        // 切 白天灰色
+    } else {
         $("#search-bg").css("background-image", "url(assets/images/bg-dna.jpg)");
         document.body.classList.remove('io-black-mode');
         document.body.classList.add('io-grey-mode');
         document.cookie = "night=0;path=/";
-        $(".switch-dark-mode").attr("data-original-title","夜间模式");
+        $(".switch-dark-mode").attr("data-original-title", "夜间模式");
         $(".mode-ico").removeClass("icon-light").addClass("icon-night");
     }
 }
 </script>
+
 
 <!--    显示时间的JS代码           -->		
 <script>
