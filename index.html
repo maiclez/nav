@@ -40,14 +40,16 @@
 }
 
 /* 2. 选中时：加粗+保持高亮 */
+
 .s-type-list .active span,
-.s-type-list label.checked span {
-    color: #1677ff !important; /* 选中时改成你按钮的蓝色，保持整体风格 */
-    font-weight: bold !important; /* 加粗强调 */
-	font-size: 18px !important;
+.s-type-list label.checked span,
+.s-type-list input:checked + label span {
+    color: #00e600 !important; /* 高亮绿色，非常醒目好看 */
+    font-weight: bold !important;
+    font-size: 18px !important;
     opacity: 1 !important;
 }
-
+	
 /* 3. 鼠标悬浮时：更亮一点，增强交互感 */
 .s-type-list label:hover span {
     color: #ffffff !important;
