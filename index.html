@@ -316,15 +316,27 @@
                 </div>
             </div>
 
-            <form action="https://www.baidu.com?s=" method="get" target="_blank" class="super-search-fm">
-                <input type="text" id="search-text" class="form-control smart-tips search-key"
-                    zhannei="" placeholder="选择「站内」可搜索本站工具" style="outline: none; border: 0; height: 48px; padding-left: 15px;" autocomplete="off">
-                <button class="submit" type="submit" style="background-color: #1677ff; color: white; border: 0; width: 50px; height: 48px; border-radius: 0 8px 8px 0;">
-                <i class="iconfont icon-search" style="color:white;"></i>
-                </button>
-            </form>
 
-			
+
+
+<form action="https://www.baidu.com?s=" method="get" target="_blank" class="super-search-fm" style="display: flex; align-items: center; border-radius: 999px; overflow: hidden;">
+    <input type="text" id="search-text" class="form-control smart-tips search-key"
+        zhannei="" placeholder="选择「站内」可搜索本站工具" style="outline: none; border: 0; height: 48px; padding-left: 15px; flex: 1;" autocomplete="off">
+    <button class="submit" type="submit" style="
+        background-color: #1677ff;
+        color: white;
+        border: 0;
+        width: 50px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    ">
+        <i class="iconfont icon-search" style="color:white; font-size: 18px;"></i>
+    </button>
+</form>
+
+					
             <div id="search-list" class="hide-type-list">
                 <!-- 新增：站内搜索分组 -->
                 <div class="search-group group-local">
