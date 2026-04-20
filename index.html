@@ -31,35 +31,43 @@
     <script type="text/javascript" src="./assets/js/content-search.js"  id="content-search-js"></script>
 
 <style>
+/* 让整个表单变成一行，输入框和按钮完美贴合 */
 .super-search-fm {
-    display: flex;
-    align-items: center;
-    border-radius: 8px;
-    overflow: hidden; /* 让按钮和输入框的圆角完美贴合 */
+    display: flex !important;
+    align-items: stretch !important;
+    border-radius: 999px !important; /* 用大圆角实现完全圆润的效果 */
+    overflow: hidden !important; /* 裁剪掉超出部分，解决凸出来的问题 */
 }
 
+/* 输入框部分 */
 .super-search-fm .search-key {
-    border: none;
-    flex: 1; /* 让输入框自动占满剩余空间 */
-    padding: 12px 16px;
-    outline: none;
+    border: none !important;
+    flex: 1 !important;
+    padding: 12px 18px !important;
+    outline: none !important;
+    background: #fff !important;
 }
 
+/* 蓝色按钮部分 */
 .super-search-fm .submit {
-    background-color: #4080ff !important; /* 标准蓝色 */
+    background-color: #4080ff !important;
     color: #ffffff !important; /* 强制白色放大镜 */
     border: none !important;
-    border-radius: 0 !important; /* 先去掉按钮自己的圆角 */
-    width: 56px !important; /* 调整宽度，让蓝色块更标准 */
-    height: 100% !important; /* 和输入框高度一致 */
+    width: 56px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 18px !important; /* 调整放大镜大小 */
+    font-size: 18px !important;
+    border-radius: 0 !important; /* 去掉按钮自己的圆角，交给父元素裁剪 */
 }
 
 .super-search-fm .submit:hover {
-    background-color: #3370e6 !important; /* 悬浮加深 */
+    background-color: #3370e6 !important;
+}
+
+/* 强制放大镜图标为白色 */
+.super-search-fm .submit i {
+    color: #ffffff !important;
 }
 </style>
 
