@@ -317,18 +317,25 @@
             </div>
 
 
-<form action="https://www.baidu.com?s=" method="get" target="_blank" class="super-search-fm" style="display: flex; align-items: center; width: 100%;">
+<form action="https://www.baidu.com?s=" method="get" target="_blank" class="super-search-fm" style="
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: linear-gradient(to right, #fff 0%, #fff calc(100% - 50px), #1677ff calc(100% - 50px), #1677ff 100%);
+    border-radius: 24px;
+    overflow: hidden;
+">
     <input type="text" id="search-text" class="form-control smart-tips search-key"
         zhannei="" placeholder="选择「站内」可搜索本站工具" 
         style="
             outline: none !important;
             border: none !important;
-            background: #fff !important;
+            background: transparent !important;
             padding: 0 18px !important;
             height: 48px !important;
             flex: 1 !important;
             margin: 0 !important;
-            border-radius: 24px 0 0 24px !important; /* 只给左边加圆角 */
+            border-radius: 0 !important;
         " 
         autocomplete="off">
     
@@ -341,7 +348,7 @@
         align-items: center !important;
         justify-content: center !important;
         margin: 0 !important;
-        border-radius: 0 24px 24px 0 !important; /* 只给右边加圆角 */
+        border-radius: 0 !important;
     ">
         <i class="iconfont icon-search" style="color:white !important; font-size: 18px !important;"></i>
     </button>
