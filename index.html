@@ -8743,55 +8743,76 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 </script>
 
+
 <script>
-(function () {
-    // 如果没有保存过模式
-    if (document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") === '') {
+// 等待页面完全加载后再执行（修复关键！）
+$(document).ready(function () {
+    // 检查是否已有保存的模式
+    var night = getCookie("night");
+
+    if (night === "") {
+        // 没有保存过 → 根据时间自动设置
         var hour = new Date().getHours();
-        // 晚上 22:00 ~ 早上 06:00 → 自动开启黑色夜间模式
         if (hour > 22 || hour < 6) {
-            document.body.classList.remove('io-grey-mode');
-            document.body.classList.add('io-black-mode');
-            document.cookie = "night=1;path=/";
+            // 夜间 → 切换黑色模式
+            setNightMode();
         } else {
-            // 白天 → 普通灰色模式
-            document.body.classList.remove('io-black-mode');
-            document.body.classList.add('io-grey-mode');
-            document.cookie = "night=0;path=/";
+            // 白天 → 普通模式
+            setDayMode();
         }
     } else {
-        var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
-        if (night === '0') {
-            document.body.classList.remove('io-black-mode');
-            document.body.classList.add('io-grey-mode');
-        } else if (night === '1') {
-            document.body.classList.remove('io-grey-mode');
-            document.body.classList.add('io-black-mode');
+        // 有保存 → 按保存的来
+        if (night === "0") {
+            setDayMode();
+        } else {
+            setNightMode();
         }
     }
-})();
 
-$("#search-bg").css("background-image", "url(assets/images/bg-dna.jpg)");
+    // 工具函数：读取 Cookie
+    function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length === 2) return parts.pop().split(";").shift();
+        return "";
+    }
 
-function switchNightMode() {
-    var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
-    if (night === '0') {
-        $("#search-bg").css("background-image", "url(assets/images/bg-dna.jpg)");
-        document.body.classList.remove('io-grey-mode');
-        document.body.classList.add('io-black-mode');
-        document.cookie = "night=1;path=/";
-        $(".switch-dark-mode").attr("data-original-title", "日间模式");
-        $(".mode-ico").removeClass("icon-night").addClass("icon-light");
-    } else {
-        $("#search-bg").css("background-image", "url(assets/images/bg-dna.jpg)");
-        document.body.classList.remove('io-black-mode');
-        document.body.classList.add('io-grey-mode');
+    // 日间模式
+    function setDayMode() {
+        $("body").removeClass("io-black-mode").addClass("io-grey-mode");
         document.cookie = "night=0;path=/";
         $(".switch-dark-mode").attr("data-original-title", "夜间模式");
         $(".mode-ico").removeClass("icon-light").addClass("icon-night");
     }
+
+    // 夜间模式
+    function setNightMode() {
+        $("body").removeClass("io-grey-mode").addClass("io-black-mode");
+        document.cookie = "night=1;path=/";
+        $(".switch-dark-mode").attr("data-original-title", "日间模式");
+        $(".mode-ico").removeClass("icon-night").addClass("icon-light");
+    }
+});
+
+// 背景图
+$("#search-bg").css("background-image", "url(assets/images/bg-dna.jpg)");
+
+// 手动点击切换
+function switchNightMode() {
+    if ($("body").hasClass("io-black-mode")) {
+        $("body").removeClass("io-black-mode").addClass("io-grey-mode");
+        document.cookie = "night=0;path=/";
+        $(".switch-dark-mode").attr("data-original-title", "夜间模式");
+        $(".mode-ico").removeClass("icon-light").addClass("icon-night");
+    } else {
+        $("body").removeClass("io-grey-mode").addClass("io-black-mode");
+        document.cookie = "night=1;path=/";
+        $(".switch-dark-mode").attr("data-original-title", "日间模式");
+        $(".mode-ico").removeClass("icon-night").addClass("icon-light");
+    }
 }
 </script>
+
 
 
 <!--    显示时间的JS代码           -->		
