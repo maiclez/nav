@@ -8890,12 +8890,13 @@ $(function () {
 });
 </script>
 
+
 <script>
-// 切换分类时自动触发搜索，不用删字
+// 切换分类时自动触发站内搜索（jQuery 版，必生效）
 function triggerSearch() {
-  const input = document.getElementById('search-text');
-  if (input && input.value.trim() !== '') {
-    input.dispatchEvent(new Event('input'));
+  const input = $('#search-text');
+  if (input && input.val().trim() !== '') {
+    input.trigger('input'); // 👈 这行才是正确触发你站内筛选的代码
   }
 }
 </script>	
