@@ -8744,32 +8744,36 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-
-
+<!--    夜间和日间模式切换           -->
 <script>
-// 进入网站时：读取你上次保存的模式，自动恢复
+// 【核心优化】不等页面加载，一进来立刻判断模式（不闪、不卡）
+var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
+
+if (night === '1') {
+    // 瞬间切换夜间模式
+    document.body.classList.remove('io-grey-mode');
+    document.body.classList.add('io-black-mode');
+} else {
+    // 瞬间切换日间模式
+    document.body.classList.remove('io-black-mode');
+    document.body.classList.add('io-grey-mode');
+}
+
+// 下面是正常功能（不动）
 $(document).ready(function () {
-    var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
-    
+    // 刷新图标状态
     if (night === '1') {
-        // 上次是夜间模式 → 打开就是黑色
-        document.body.classList.remove('io-grey-mode');
-        document.body.classList.add('io-black-mode');
         $(".switch-dark-mode").attr("data-original-title", "日间模式");
         $(".mode-ico").removeClass("icon-night").addClass("icon-light");
     } else {
-        // 第一次访问 或 上次是日间 → 打开就是灰色
-        document.body.classList.remove('io-black-mode');
-        document.body.classList.add('io-grey-mode');
         $(".switch-dark-mode").attr("data-original-title", "夜间模式");
         $(".mode-ico").removeClass("icon-light").addClass("icon-night");
     }
 });
 
-// 搜索框背景
 $("#search-bg").css("background-image", "url(assets/images/bg-dna.jpg)");
 
-// 点击按钮切换模式（正常可用）
+// 点击切换（正常使用）
 function switchNightMode() {
     var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
     if (night === '0') {
@@ -8789,11 +8793,6 @@ function switchNightMode() {
     }
 }
 </script>
-
-
-
-	
-
 
 
 <!--    显示时间的JS代码           -->		
