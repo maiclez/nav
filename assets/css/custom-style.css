@@ -113,7 +113,13 @@ footer.main-footer .footer-text a:hover {
 }
 
 
-
+/* 顶部搜索背景淡化，和浅绿护眼背景统一 */
+.header-big {
+    background-image: url("assets/images/bg-dna.jpg") !important;
+    background-color: #DCE8DD !important;
+    background-blend-mode: soft-light !important;
+    opacity: 0.85 !important;
+}
 
 
 
