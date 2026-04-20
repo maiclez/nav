@@ -277,8 +277,8 @@
 
                     <ul class="nav navbar-menu text-xs order-1 order-md-2">
 
-                        <li class="nav-search ml-3 ml-md-4">
-                            <a href="javascript:" id="focus-site-search"><i class="iconfont icon-search icon-2x"></i></a>
+						<li class="nav-search ml-3 ml-md-4">
+                           <a href="javascript:" id="focus-site-search"><i class="iconfont icon-search icon-2x"></i></a>
                         </li>
 
 						<!--    手机端侧边栏菜单按钮        -->
@@ -8660,28 +8660,30 @@ var theme = {
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const searchInput = document.getElementById("site-card-search");
-    const focusButtons = [
-        document.getElementById("focus-site-search"),    // 顶部搜索按钮
-        document.getElementById("footer-focus-search")   // 底部搜索按钮
-    ];
+    // 这里改成你真实的搜索框 ID：search-text
+    const searchInput = document.getElementById("search-text");
+    
+    const topBtn = document.getElementById("focus-site-search");
+    const bottomBtn = document.getElementById("footer-focus-search");
 
-    // 点击 → 跳转到搜索框并激活
-    function focusSearch() {
+    function goSearch() {
         if (!searchInput) return;
+        
+        // 平滑滚动到顶部
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // 自动聚焦搜索框
         setTimeout(() => {
             searchInput.focus();
-            searchInput.classList.add("site-search-highlight");
-            setTimeout(() => searchInput.classList.remove("site-search-highlight"), 1000);
-        }, 300);
+            searchInput.select();
+        }, 400);
     }
 
-    focusButtons.forEach(btn => {
-        if (btn) btn.addEventListener("click", focusSearch);
-    });
+    if (topBtn) topBtn.onclick = goSearch;
+    if (bottomBtn) bottomBtn.onclick = goSearch;
 });
 </script>
+
 
 	
 <script type="text/javascript">
