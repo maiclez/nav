@@ -306,13 +306,16 @@
                         <div class="anchor" style="position: absolute; left: 50%; opacity: 0;"></div>
 
                         <!-- 👇 下面这一排全部加了自动触发搜索，直接用 -->
-						<label for="type-local" data-id="group-local" onclick="triggerSearch()"><span>站内</span></label>
-                        <label for="type-baidu" data-id="group-a"><span>常用</span></label>
-                        <label for="type-baidu1" data-id="group-b"><span>搜索</span></label>
-                        <label for="type-whois" data-id="group-c"><span>工具</span></label>
-                        <label for="type-zhihu" data-id="group-d"><span>社区</span></label>
-                        <label for="type-taobao1" data-id="group-e"><span>生活</span></label>
-						<label for="type-boss" data-id="group-f"><span>求职</span></label>
+
+<label for="type-local" data-id="group-local" onclick="triggerSearch()"><span>站内</span></label>
+<label for="type-baidu" data-id="group-a" onclick="clearSiteSearch()"><span>常用</span></label>
+<label for="type-baidu1" data-id="group-b" onclick="clearSiteSearch()"><span>搜索</span></label>
+<label for="type-whois" data-id="group-c" onclick="clearSiteSearch()"><span>工具</span></label>
+<label for="type-zhihu" data-id="group-d" onclick="clearSiteSearch()"><span>社区</span></label>
+<label for="type-taobao1" data-id="group-e" onclick="clearSiteSearch()"><span>生活</span></label>
+<label for="type-boss" data-id="group-f" onclick="clearSiteSearch()"><span>求职</span></label>
+
+
                     </div>
                 </div>
             </div>
@@ -8890,21 +8893,23 @@ $(function () {
 </script>
 
 
-<script>
-// 修复：切换到站内时，强制激活并立即搜索
+<script>	
+// 切换到站内 → 立即搜索
 function triggerSearch() {
-    const input = $('#search-text');
-    const kw = input.val().trim();
+    setTimeout(function() {
+        $('#type-local').prop('checked', true);
+        $('#search-text').trigger('input');
+    }, 50);
+}
 
-    if (!kw) return;
-
-    // 强制选中「站内」选项
-    $('#type-local').prop('checked', true);
-    
-    // 强制触发搜索
-    input.trigger('input');
+// 切回站外 → 清空站内筛选，显示全部卡片
+function clearSiteSearch() {
+    $('.url-card').show();        // 显示所有卡片
+    $('#site-search-empty').hide(); // 隐藏空提示
 }
 </script>
+
+	
 	
 </body>
 </html>
