@@ -30,46 +30,6 @@
     <script type="text/javascript" src="./assets/js/jquery.min-3.2.1.js" id="jquery-js"></script>
     <script type="text/javascript" src="./assets/js/content-search.js"  id="content-search-js"></script>
 
-<style>
-/* 让整个表单变成一行，输入框和按钮完美贴合 */
-.super-search-fm {
-    display: flex !important;
-    align-items: stretch !important;
-    border-radius: 999px !important; /* 用大圆角实现完全圆润的效果 */
-    overflow: hidden !important; /* 裁剪掉超出部分，解决凸出来的问题 */
-}
-
-/* 输入框部分 */
-.super-search-fm .search-key {
-    border: none !important;
-    flex: 1 !important;
-    padding: 12px 18px !important;
-    outline: none !important;
-    background: #fff !important;
-}
-
-/* 蓝色按钮部分 */
-.super-search-fm .submit {
-    background-color: #4080ff !important;
-    color: #ffffff !important; /* 强制白色放大镜 */
-    border: none !important;
-    width: 56px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 18px !important;
-    border-radius: 0 !important; /* 去掉按钮自己的圆角，交给父元素裁剪 */
-}
-
-.super-search-fm .submit:hover {
-    background-color: #3370e6 !important;
-}
-
-/* 强制放大镜图标为白色 */
-.super-search-fm .submit i {
-    color: #ffffff !important;
-}
-</style>
 
 </head>
 
@@ -358,9 +318,12 @@
 
             <form action="https://www.baidu.com?s=" method="get" target="_blank" class="super-search-fm">
                 <input type="text" id="search-text" class="form-control smart-tips search-key"
-                    zhannei="" placeholder="选择「站内」可搜索本站工具" style="outline:0" autocomplete="off">
-                <button class="submit" type="submit"><i class="iconfont icon-search"></i></button>
+                    zhannei="" placeholder="选择「站内」可搜索本站工具" style="outline: none; border: 0; height: 48px; padding-left: 15px;" autocomplete="off">
+                <button class="submit" type="submit" style="background-color: #1677ff; color: white; border: 0; width: 50px; height: 48px; border-radius: 0 8px 8px 0;">
+                <i class="iconfont icon-search" style="color:white;"></i>
+                </button>
             </form>
+
 			
             <div id="search-list" class="hide-type-list">
                 <!-- 新增：站内搜索分组 -->
