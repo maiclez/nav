@@ -306,18 +306,17 @@
                         <div class="anchor" style="position: absolute; left: 50%; opacity: 0;"></div>
 
                         <!-- 👇 下面这一排全部加了自动触发搜索，直接用 -->
-                        <label for="type-local" data-id="group-local" onclick="triggerSearch()"><span>站内</span></label>
-                        <label for="type-baidu" data-id="group-a" onclick="triggerSearch()"><span>常用</span></label>
-                        <label for="type-baidu1" data-id="group-b" onclick="triggerSearch()"><span>搜索</span></label>
-                        <label for="type-whois" data-id="group-c" onclick="triggerSearch()"><span>工具</span></label>
-                        <label for="type-zhihu" data-id="group-d" onclick="triggerSearch()"><span>社区</span></label>
-                        <label for="type-taobao1" data-id="group-e" onclick="triggerSearch()"><span>生活</span></label>
-                        <label for="type-boss" data-id="group-f" onclick="triggerSearch()"><span>求职</span></label>
-
+						<label for="type-local" data-id="group-local" onclick="triggerSearch()"><span>站内</span></label>
+                        <label for="type-baidu" data-id="group-a"><span>常用</span></label>
+                        <label for="type-baidu1" data-id="group-b"><span>搜索</span></label>
+                        <label for="type-whois" data-id="group-c"><span>工具</span></label>
+                        <label for="type-zhihu" data-id="group-d"><span>社区</span></label>
+                        <label for="type-taobao1" data-id="group-e"><span>生活</span></label>
+						<label for="type-boss" data-id="group-f"><span>求职</span></label>
                     </div>
                 </div>
             </div>
-
+	
 
 <form action="https://www.baidu.com?s=" method="get" target="_blank" class="super-search-fm" style="display: flex; align-items: center;">
     <input type="text" id="search-text" class="form-control smart-tips search-key"
@@ -8892,14 +8891,20 @@ $(function () {
 
 
 <script>
-// 切换分类时自动触发站内搜索（jQuery 版，必生效）
+// 修复：切换到站内时，强制激活并立即搜索
 function triggerSearch() {
-  const input = $('#search-text');
-  if (input && input.val().trim() !== '') {
-    input.trigger('input'); // 👈 这行才是正确触发你站内筛选的代码
-  }
+    const input = $('#search-text');
+    const kw = input.val().trim();
+
+    if (!kw) return;
+
+    // 强制选中「站内」选项
+    $('#type-local').prop('checked', true);
+    
+    // 强制触发搜索
+    input.trigger('input');
 }
-</script>	
+</script>
 	
 </body>
 </html>
