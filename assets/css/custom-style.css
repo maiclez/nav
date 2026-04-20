@@ -104,13 +104,11 @@ footer.main-footer .footer-text a:hover {
 
 /*网格背景*/
 
-
-
 .io-grey-mode .page-container .grid-bg {
     background-image: none;
-    background-size: 15px 15px;
-    background-color: #e0e0e0; /* 比上面再暗一点 */
+    background-color: #C7EDCC;
 }
+
 
 
 
