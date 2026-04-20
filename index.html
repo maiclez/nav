@@ -317,7 +317,7 @@
             </div>
 
 
-<form action="https://www.baidu.com?s=" method="get" target="_blank" class="super-search-fm" style="display: flex;">
+<form action="https://www.baidu.com?s=" method="get" target="_blank" class="super-search-fm" style="display: flex; position: relative;">
     <input type="text" id="search-text" class="form-control smart-tips search-key"
         zhannei="" placeholder="选择「站内」可搜索本站工具" 
         style="
@@ -332,21 +332,23 @@
         " 
         autocomplete="off">
     
+    <!-- 把按钮加宽到60px，向左延伸，覆盖缝隙 -->
     <button class="submit" type="submit" style="
         background-color: #1677FF !important;
         color: #fff !important;
         border: 0 !important;
-        width: 50px !important;
+        width: 60px !important;
         height: 46px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         border-radius: 0 !important;
+        position: relative !important;
+        left: -10px !important; /* 向左移动10px，盖住和输入框的缝隙 */
     ">
         <i class="iconfont icon-search" style="color:white !important; font-size: 16px !important;"></i>
     </button>
 </form>
-
 					
             <div id="search-list" class="hide-type-list">
                 <!-- 新增：站内搜索分组 -->
