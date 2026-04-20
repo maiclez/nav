@@ -28,7 +28,20 @@
         type="text/css" media="all" />
     <link rel="stylesheet" id="fortawesome-css" href="./assets/fontawesome-5.15.4/css/all.min.css" type="text/css" />
     <script type="text/javascript" src="./assets/js/jquery.min-3.2.1.js" id="jquery-js"></script>
-    <script type="text/javascript" src="./assets/js/content-search.js"  id="content-search-js"></script>	
+    <script type="text/javascript" src="./assets/js/content-search.js"  id="content-search-js"></script>
+
+	<style>
+.super-search-fm .submit {
+    background-color: #4080ff; /* 蓝色底色 */
+    color: #fff; /* 白色图标 */
+    border: none;
+    border-radius: 0 8px 8px 0; /* 只给右边圆角 */
+    width: 50px; /* 固定宽度，让蓝色块更明显 */
+}
+.super-search-fm .submit:hover {
+    background-color: #3370e6; /* 鼠标悬浮时变深一点，更有反馈 */
+}
+</style>
 
 </head>
 
@@ -320,7 +333,7 @@
                     zhannei="" placeholder="选择「站内」可搜索本站工具" style="outline:0" autocomplete="off">
                 <button class="submit" type="submit"><i class="iconfont icon-search"></i></button>
             </form>
-
+			
             <div id="search-list" class="hide-type-list">
                 <!-- 新增：站内搜索分组 -->
                 <div class="search-group group-local">
