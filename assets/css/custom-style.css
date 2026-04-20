@@ -107,8 +107,8 @@ footer.main-footer .footer-text a:hover {
 .io-grey-mode .page-container .grid-bg {
     background-color: #DCE8DD;
     background-image: 
-        linear-gradient(to right, rgba(0, 100, 0, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 100, 0, 0.03) 1px, transparent 1px);
+        linear-gradient(to right, rgba(0, 100, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 100, 0, 0.05) 1px, transparent 1px);
     background-size: 20px 20px;
 }
 
