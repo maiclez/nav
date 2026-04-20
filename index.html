@@ -8744,74 +8744,55 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
+
+
 <script>
-// 等待页面完全加载后再执行（修复关键！）
+// 进入网站时：读取你上次保存的模式，自动恢复
 $(document).ready(function () {
-    // 检查是否已有保存的模式
-    var night = getCookie("night");
-
-    if (night === "") {
-        // 没有保存过 → 根据时间自动设置
-        var hour = new Date().getHours();
-        if (hour > 22 || hour < 6) {
-            // 夜间 → 切换黑色模式
-            setNightMode();
-        } else {
-            // 白天 → 普通模式
-            setDayMode();
-        }
-    } else {
-        // 有保存 → 按保存的来
-        if (night === "0") {
-            setDayMode();
-        } else {
-            setNightMode();
-        }
-    }
-
-    // 工具函数：读取 Cookie
-    function getCookie(name) {
-        var value = "; " + document.cookie;
-        var parts = value.split("; " + name + "=");
-        if (parts.length === 2) return parts.pop().split(";").shift();
-        return "";
-    }
-
-    // 日间模式
-    function setDayMode() {
-        $("body").removeClass("io-black-mode").addClass("io-grey-mode");
-        document.cookie = "night=0;path=/";
-        $(".switch-dark-mode").attr("data-original-title", "夜间模式");
-        $(".mode-ico").removeClass("icon-light").addClass("icon-night");
-    }
-
-    // 夜间模式
-    function setNightMode() {
-        $("body").removeClass("io-grey-mode").addClass("io-black-mode");
-        document.cookie = "night=1;path=/";
+    var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
+    
+    if (night === '1') {
+        // 上次是夜间模式 → 打开就是黑色
+        document.body.classList.remove('io-grey-mode');
+        document.body.classList.add('io-black-mode');
         $(".switch-dark-mode").attr("data-original-title", "日间模式");
         $(".mode-ico").removeClass("icon-night").addClass("icon-light");
+    } else {
+        // 第一次访问 或 上次是日间 → 打开就是灰色
+        document.body.classList.remove('io-black-mode');
+        document.body.classList.add('io-grey-mode');
+        $(".switch-dark-mode").attr("data-original-title", "夜间模式");
+        $(".mode-ico").removeClass("icon-light").addClass("icon-night");
     }
 });
 
-// 背景图
+// 搜索框背景
 $("#search-bg").css("background-image", "url(assets/images/bg-dna.jpg)");
 
-// 手动点击切换
+// 点击按钮切换模式（正常可用）
 function switchNightMode() {
-    if ($("body").hasClass("io-black-mode")) {
-        $("body").removeClass("io-black-mode").addClass("io-grey-mode");
-        document.cookie = "night=0;path=/";
-        $(".switch-dark-mode").attr("data-original-title", "夜间模式");
-        $(".mode-ico").removeClass("icon-light").addClass("icon-night");
-    } else {
-        $("body").removeClass("io-grey-mode").addClass("io-black-mode");
+    var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
+    if (night === '0') {
+        $("#search-bg").css("background-image", "url(assets/images/bg-dna.jpg)");
+        document.body.classList.remove('io-grey-mode');
+        document.body.classList.add('io-black-mode');
         document.cookie = "night=1;path=/";
         $(".switch-dark-mode").attr("data-original-title", "日间模式");
         $(".mode-ico").removeClass("icon-night").addClass("icon-light");
+    } else {
+        $("#search-bg").css("background-image", "url(assets/images/bg-dna.jpg)");
+        document.body.classList.remove('io-black-mode');
+        document.body.classList.add('io-grey-mode');
+        document.cookie = "night=0;path=/";
+        $(".switch-dark-mode").attr("data-original-title", "夜间模式");
+        $(".mode-ico").removeClass("icon-light").addClass("icon-night");
     }
 }
 </script>
+
+
+
+	
 
 
 
