@@ -304,14 +304,16 @@
                 <div class="s-type text-center">
                     <div class="s-type-list big">
                         <div class="anchor" style="position: absolute; left: 50%; opacity: 0;"></div>
-                        <!-- 新增：站内 -->
-                        <label for="type-local" data-id="group-local"><span>站内</span></label>
-                        <label for="type-baidu" data-id="group-a"><span>常用</span></label>
-                        <label for="type-baidu1" data-id="group-b"><span>搜索</span></label>
-                        <label for="type-whois" data-id="group-c"><span>工具</span></label>
-                        <label for="type-zhihu" data-id="group-d"><span>社区</span></label>
-                        <label for="type-taobao1" data-id="group-e"><span>生活</span></label>
-						<label for="type-boss" data-id="group-f"><span>求职</span></label>
+
+                        <!-- 👇 下面这一排全部加了自动触发搜索，直接用 -->
+                        <label for="type-local" data-id="group-local" onclick="triggerSearch()"><span>站内</span></label>
+                        <label for="type-baidu" data-id="group-a" onclick="triggerSearch()"><span>常用</span></label>
+                        <label for="type-baidu1" data-id="group-b" onclick="triggerSearch()"><span>搜索</span></label>
+                        <label for="type-whois" data-id="group-c" onclick="triggerSearch()"><span>工具</span></label>
+                        <label for="type-zhihu" data-id="group-d" onclick="triggerSearch()"><span>社区</span></label>
+                        <label for="type-taobao1" data-id="group-e" onclick="triggerSearch()"><span>生活</span></label>
+                        <label for="type-boss" data-id="group-f" onclick="triggerSearch()"><span>求职</span></label>
+
                     </div>
                 </div>
             </div>
@@ -8887,6 +8889,16 @@ $(function () {
     });
 });
 </script>
+
+<script>
+// 切换分类时自动触发搜索，不用删字
+function triggerSearch() {
+  const input = document.getElementById('search-text');
+  if (input && input.value.trim() !== '') {
+    input.dispatchEvent(new Event('input'));
+  }
+}
+</script>	
 	
 </body>
 </html>
