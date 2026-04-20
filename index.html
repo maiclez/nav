@@ -8886,6 +8886,31 @@ function switchNightMode(){
 }
 </script>
 
+<!--    显示时间的JS代码           -->		
+<script>
+function updateRuntime() {
+    const startTime = new Date("2026-03-15T00:00:00+08:00");
+    const now = new Date();
+    const diff = now - startTime;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(diff / (1000 * 60 * 60) % 24);
+    const minutes = Math.floor(diff / (1000 * 60) % 60);
+    const seconds = Math.floor(diff / 1000 % 60);
+
+    function pad(n) {
+        return n < 10 ? '0' + n : n;
+    }
+
+    const runtime = document.getElementById("runtime");
+    if (runtime) {
+        runtime.innerText = `⏱️ 已稳定运行 ${days}天 ${pad(hours)}时 ${pad(minutes)}分 ${pad(seconds)}秒`;
+    }
+}
+setInterval(updateRuntime, 1000);
+updateRuntime();
+</script>
+
 
 <!--    站内搜索JS           -->	
 <script>
