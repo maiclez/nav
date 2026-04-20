@@ -105,7 +105,9 @@ footer.main-footer .footer-text a:hover {
 /*网格背景*/
 
 .io-grey-mode .page-container .grid-bg {
-    background-image: none;
+    background-image:
+        linear-gradient(to right, rgba(0, 100, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 100, 0, 0.05) 1px, transparent 1px);
     background-color: #DCE8DD;
 }
 
