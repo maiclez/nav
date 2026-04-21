@@ -103,7 +103,6 @@ footer.main-footer .footer-text a:hover {
 .panel .panel-body a:hover {color: #979898;}
 
 /*网格背景*/
-
 .io-grey-mode .page-container .grid-bg {
     background-color: #DCE8DD;
     background-image: 
@@ -112,7 +111,12 @@ footer.main-footer .footer-text a:hover {
     background-size: 15px 15px;
 }
 
-
+.header-big {
+    background-image: url("assets/images/bg-dna.jpg");
+    background-color: #DCE8DD;
+    background-blend-mode: soft-light; /* 让图片和背景色柔和混合 */
+    opacity: 0.99; /* 整体透明度降低 */
+}
 
 
 
