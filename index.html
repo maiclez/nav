@@ -349,7 +349,7 @@
 
 <form action="https://www.baidu.com?s=" method="get" target="_blank" class="super-search-fm" style="display: flex; align-items: center;">
     <input type="text" id="search-text" class="form-control smart-tips search-key"
-        zhannei="" placeholder="选择「站内」可搜索本站工具" 
+        zhannei="" placeholder="选择「站内」可搜索本站工具卡片" 
         style="
             outline: none !important;
             border: none !important;
@@ -386,7 +386,7 @@
                     <ul class="search-type">
                         <li>
                             <input hidden type="radio" name="type" id="type-local" value="local"
-                                data-placeholder="搜索本站工具，直接输入即可自动检索">
+                                data-placeholder="选择「站内」输入即可自动检索本站工具卡片...">
                             <label for="type-local"><span class="text-muted">站内搜索</span></label>
                         </li>
                     </ul>
@@ -9223,7 +9223,7 @@ $(function () {
         if (val === 'local') {
             // 站内模式
             $('.super-search-fm').attr('onsubmit', 'return false');
-            $('#search-text').attr('placeholder', '搜索本站工具卡片...');
+            $('#search-text').attr('placeholder', '选择「站内」输入即可自动检索本站工具卡片...');
         } else {
             // 站外模式：自动使用原来的提示文字
             $('.super-search-fm').removeAttr('onsubmit');
