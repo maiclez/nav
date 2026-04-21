@@ -113,12 +113,9 @@ footer.main-footer .footer-text a:hover {
 
 .header-big {
     background-image: url("assets/images/bg-dna.jpg");
-    background-color: rgba(220, 232, 221, 0.25);
-    background-blend-mode: normal; /* 比 soft-light 更通透、不发白 */
-    background-size: cover; /* 让图片铺满不变形（建议加上） */
-    background-position: center; /* 图片居中（建议加上） */
-}
-
+    /* 关键：把背景色改成 rgba，最后一位 0.3 就是透明度（0~1可调） */
+    background-color: rgba(220, 232, 221, 0.5); 
+    background-blend-mode: soft-light;
 
 
 
